@@ -21,7 +21,7 @@ $ gem install whois_rb
 or; install from GitHub:
 
 ```bash
-$ gem install whois_rb --version "0.0.0" --source "https://rubygems.pkg.github.com/promptapi"
+$ gem install whois_rb --version "0.1.0" --source "https://rubygems.pkg.github.com/promptapi"
 ```
 
 ---
