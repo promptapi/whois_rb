@@ -28,7 +28,59 @@ $ gem install whois_rb --version "0.0.0" --source "https://rubygems.pkg.github.c
 
 ## Example Usage
 
-@wip
+Check domain examples:
+
+```ruby
+require 'whois_rb'
+
+result = WhoisRb::check('promptapi.com')
+# => {:result=>"registered"}
+
+result = WhoisRb::check('promptapi.com', timeout=20)
+# => {:result=>"registered"}
+
+result = WhoisRb::check('foo')
+# => {:error=>"Not a valid domain name"}
+
+result = WhoisRb::check('promptapi123456.com')
+# => {:result=>"available"}
+```
+
+Query domain examples:
+
+```ruby
+require 'whois_rb'
+
+result = WhoisRb::query('foo')
+# => {:error=>"Not a valid domain name"}
+
+result = WhoisRb::query('promptapi.com')
+# => {
+    :result=>{
+        :domain_name=>"PROMPTAPI.COM", 
+        :registrar=>"NameCheap, Inc.", 
+        :whois_server=>"whois.namecheap.com", 
+        :referral_url=>nil, 
+        :updated_date=>"2020-05-27 22:19:36", 
+        :creation_date=>"2020-04-19 15:11:52", 
+        :expiration_date=>"2021-04-19 15:11:52", 
+        :name_servers=>["APOLLO.NS.CLOUDFLARE.COM", "MARJORY.NS.CLOUDFLARE.COM"], 
+        :status=>"clientTransferProhibited https://icann.org/epp#clientTransferProhibited", 
+        :emails=>"abuse@namecheap.com", 
+        :dnssec=>"unsigned", 
+        :name=>nil, 
+        :org=>nil, 
+        :address=>nil, 
+        :city=>nil, 
+        :state=>nil, 
+        :zipcode=>nil, 
+        :country=>nil
+    }
+}
+
+result = WhoisRb::query('promptapi1234.com')
+# => {:error=>"No match for promptapi1234.com"}
+```
 
 ---
 
